@@ -1,5 +1,6 @@
 import React from 'react'
 
+import {assets} from '../assets/assets'
 const Hero = () => {
   return (
     <div className='flex flex-col sm:flex-row border border-gray-400'>
@@ -17,10 +18,18 @@ const Hero = () => {
             </p>
 
           </div>
+          <h1 className='prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed'>Latest In Fashion</h1>
+          <div className='flex items-center gap-2'>
+            <p className='font-semibold text-sm md:text-base'>Shop Now <i className='fa-solid fa-arrow-right-long'></i></p>
+            <p className='w-8 md:w-11 h-[1px] bg-[#414141]'></p>
+          </div>
 
         </div>
 
       </div>
+
+      {/* hero right Side */}
+      <img src={assets.hero_img} alt="hero_img" className='w-full sm:w-1/2' />
 
     </div>
   )
