@@ -8,9 +8,9 @@ const Nav = () => {
     const [visible, setvisible] = useState(false);
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
-     
-    <img src={assets.logo} alt="logo" className='w-36'/>
-
+     <Link to='/'>
+     <img src={assets.logo} alt="logo" className='w-36'/>
+          </Link>
     <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
 
         <NavLink to='/' className='flex flex-col items-center gap-1'>
@@ -66,8 +66,8 @@ const Nav = () => {
     {/* sidebar menu for small screen */}
 
 
-        <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
-                <div className='flex flex-col grey-600'>
+          <div className={`fixed top-0 right-0 h-full bg-white z-50 transition-all duration-300 ${visible ? 'w-64' : 'w-0 overflow-hidden'}`}>
+              <div className='flex flex-col text-gray-600'>
                     <div onClick={()=>setvisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
                         <img src={assets.dropdown_icon} className='h-4 rotate-180' alt="" />
                         <p>Back</p>
