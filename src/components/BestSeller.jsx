@@ -11,7 +11,7 @@ const BestSeller = () => {
     useEffect(() => {
         if (products && products.length > 0) {
             const bestProduct = products.filter((item) => item.bestseller);
-            setBestSellers(bestProduct.slice(0, 5));
+            setBestSellers(bestProduct.slice(0, 5)); 
         }
     }, [products]);
 
@@ -20,6 +20,7 @@ const BestSeller = () => {
 
             <div className='text-center text-3xl py-8'>
                 <Title text1={'BEST'} text2={'SELLERS'} />
+               
                 <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
