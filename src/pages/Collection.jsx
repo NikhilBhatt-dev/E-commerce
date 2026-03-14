@@ -7,7 +7,7 @@ import Title from '../components/Title'
 const Collection = () => {
 
 
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -33,7 +33,13 @@ const Collection = () => {
   }
 
   const applyFilter = () => {
-    let productCopy = [...products];
+    let productCopy = products.slice();
+
+    if(showSearch && search) {
+      productCopy = productCopy.filter(item =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
 
     // Category filter
     if (category.length > 0) {
@@ -61,35 +67,35 @@ const Collection = () => {
     setFilterProducts(productCopy);
   };
 
-  // const sortProduct = () => {
-  //   let fpCopy = filterProducts.slice();
+  const sortProduct = () => {
+    let fpCopy = filterProducts.slice();
 
-  //   switch (sortType) {
-  //     case 'low-high':
-  //       setFilterProducts(fpCopy.sort((a, b) => a.price - b.price));
-  //       break;
+    switch (sortType) {
+      case 'low-high':
+        setFilterProducts(fpCopy.sort((a, b) => a.price - b.price));
+        break;
 
-  //     case 'high-low':
-  //       setFilterProducts(fpCopy.sort((a, b) => b.price - a.price));
-  //       break;
+      case 'high-low':
+        setFilterProducts(fpCopy.sort((a, b) => b.price - a.price));
+        break;
 
-  //     default:
-  //       applyFilter();
-  //       break;
-  //   }
+      default:
+        applyFilter();
+        break;
+    }
 
-  // }
+  }
 
 
 
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory, sortType, products]);
+  }, [category, subCategory,search, showSearch,products]);
   
-  // useEffect(() => {
-  //   sortProduct();
-  // }, [sortType, ])
+  useEffect(() => {
+    sortProduct();
+  }, [sortType])
 
 
   return (
