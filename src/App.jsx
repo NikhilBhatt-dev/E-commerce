@@ -13,7 +13,7 @@ import Product from './pages/Product'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
-import { useEffect } from 'react'
+
 
 const App =() =>{
   return (
