@@ -55,6 +55,12 @@ const ShopContextProvider = (props) => {
         return totalCount;
     }
         
+    const  updateQuantity = async ( item,size,quantity) => {
+        let cartData = structuredClone(cartItems);
+        cartData[item][size] = quantity;
+        setCartItems(cartData);
+
+    }
        
         
 
@@ -68,7 +74,8 @@ const ShopContextProvider = (props) => {
         setShowSearch,
         cartItems,
         addToCart,
-        getCartCount
+        getCartCount,
+        updateQuantity
     };
 
     return (
