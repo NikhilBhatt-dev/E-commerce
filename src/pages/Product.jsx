@@ -10,6 +10,7 @@ const Product = () => {
   const { products,currency } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
+  const [size, setSize] = useState('');
 
   const fetchProductData = () => {
     products.map((item) => {
@@ -52,28 +53,59 @@ const Product = () => {
           <h1 className='font-medium text-2xl mt-2 '>
             {productData.name}
           </h1>
-          <div className=' flex item-center gap-1 mt-2'>
-            <img src={assets.star_icon} alt="star" className='w-3 ' />
-            <img src={assets.star_icon} alt="star" className='w-3 ' />
-            <img src={assets.star_icon} alt="star" className='w-3 ' />
-            <img src={assets.star_icon} alt="star" className='w-3 ' />
-            <img src={assets.star_dull_icon} alt="star" className='w-3 ' />
+          
+          <div className='flex items-center gap-1 mt-2'>
+
+            <img src={assets.star_icon} alt="star" className= "w-3" />
+            <img src={assets.star_icon} alt="star" className= "w-3" />
+            <img src={assets.star_icon} alt="star" className= "w-3" />
+            <img src={assets.star_icon} alt="star" className= "w-3 " />
+            <img src={assets.star_dull_icon} alt="star" className='w-3' />
             <p className='pl-2'>(122)</p> 
           </div>
-          <p className='mt-5  text-3xl font-medium'>{currency}{productData.price}</p> 
+          <p className='mt-5 text-3xl font-medium'>{currency}{productData.price}</p> 
           <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
           <div className='flex flex-col gap-4 my-8'>
             <p>Select Size</p>
             <div className='flex gap-2 '>
-             
                 {productData.sizes.map((item, index) => (                  
-                <button key = {index} className='border border-gray-100 py-2 px-4'>{item}</button>
+                  <button onClick={()=>setSize(item)} className={`border py-2 px-4 border-gray-100 ${item === size ? 'border-orange-500': ''}`} key={index}>
+                  {item}
+                </button>
                 
               ))}
             </div>
           </div>
+
+          <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 '>
+            Add To Cart
+          </button>
+          
+          <hr className=' mt-8 sm:w-4/5'/>
+          <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
+            <p>100% Original Product</p>
+            <p>Cash on delivery available</p>
+            <p>Easy 10 days returns and exchanges</p>
+          </div>
         </div>
       </div>
+
+      {/* Description & reviews section */}
+      <div className=' mt-20'>
+        <div className='flex'>
+          <b className='border px-5 py-3 text-sm '>Description</b>
+          <p className=' border px-5 py-3 text-sm'> Review(122)</p>
+        </div>
+        <div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
+          <p>An e-commerce platform is an online platform that facilitates the buying and selling of goods and services over the internet. It is a platform that allows businesses to sell their products and services to customers online.</p>
+          <p> E-Commerce websites typically display product or service alonnng with detailed descriptions, images, and pricing information. Customers can add products to their shopping cart and proceed to checkout.</p>
+          {/* <p>{productData.description}</p> */}
+
+        </div>
+
+
+      </div>
+
   </div>
   ): <div className='opacity-0'></div>
 }
