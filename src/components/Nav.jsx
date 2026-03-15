@@ -8,7 +8,7 @@ import { ShopContext } from '../context/ShopContext'
 const Nav = ({ theme, toggleTheme, isHomePage }) => {
 
     const [visible, setvisible] = useState(false);
-    const {setShowSearch} = useContext(ShopContext);
+    const {setShowSearch, getCartCount} = useContext(ShopContext);
   return (
     <div className={`flex items-center justify-between py-5 font-medium transition-colors duration-300 ${isHomePage ? 'home-nav' : ''}`}>
      <Link to='/'>
@@ -78,7 +78,7 @@ const Nav = ({ theme, toggleTheme, isHomePage }) => {
 
         <Link to='/cart' className='relative'>
         <img src={assets.cart_icon} alt="cart-icon" className='w-5 min-w-5' />
-        <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[-8px]'>10</p>
+        <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[-8px]'>{getCartCount()}</p>
         </Link>
         <img  onClick ={() => setvisible(true)} src={assets.menu_icon} alt="" className='w-5 cursor-pointer sm:hidden' />
 

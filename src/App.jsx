@@ -13,7 +13,8 @@ import Product from './pages/Product'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App =() =>{
   const location = useLocation();
@@ -28,8 +29,10 @@ const App =() =>{
     setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'));
   };
 
+
   return (
    <div className={`app-shell app-theme-${theme} px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]`}>
+    <ToastContainer />
     <Nav theme={theme} toggleTheme={toggleTheme} isHomePage={isHomePage} />
     <SearchBar />
     <Routes>
