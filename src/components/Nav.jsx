@@ -5,16 +5,16 @@ import { Link, NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 
-const Nav = () => {
+const Nav = ({ theme, toggleTheme, isHomePage }) => {
 
     const [visible, setvisible] = useState(false);
     const {setShowSearch} = useContext(ShopContext);
   return (
-    <div className='flex items-center justify-between py-5 font-medium'>
+    <div className={`flex items-center justify-between py-5 font-medium transition-colors duration-300 ${isHomePage ? 'home-nav' : ''}`}>
      <Link to='/'>
      <img src={assets.logo} alt="logo" className='w-36'/>
           </Link>
-    <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
+    <ul className={`hidden sm:flex gap-5 text-sm ${isHomePage ? 'home-nav-links' : 'text-gray-700'}`}>
 
         <NavLink to='/' className='flex flex-col items-center gap-1'>
             <p>Home</p>
@@ -42,13 +42,32 @@ const Nav = () => {
 
     </ul>
 
-    <div className='flex items-center gap-6'>
+    <div className='flex items-center gap-4 sm:gap-6'>
+        {isHomePage && (
+          <button
+            type='button'
+            onClick={toggleTheme}
+            className='theme-toggle flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300'
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? (
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.8' className='h-5 w-5'>
+                <circle cx='12' cy='12' r='4' />
+                <path d='M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77' />
+              </svg>
+            ) : (
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='h-5 w-5'>
+                <path d='M21 14.25A8.25 8.25 0 0 1 9.75 3a8.25 8.25 0 1 0 11.25 11.25Z' />
+              </svg>
+            )}
+          </button>
+        )}
         <img onClick={()=>setShowSearch(true)} src={assets.search_icon} alt="search-icon" className='w-5 cursor-pointer' />
         
         <div className='group relative'>
                   <img className='w-5 cursor-pointer' src={assets.profile_icon} alt="profile_icon" />
                   <div className='group-hover:block hidden absolute right-0 pt-4'>
-                      <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-md'>
+                      <div className={`flex flex-col gap-2 w-36 py-3 px-5 rounded shadow-md ${isHomePage ? 'home-profile-menu' : 'bg-white text-gray-500'}`}>
                           <p className='cursor-pointer hover:text-black'>My Profile</p>
                           <p className='cursor-pointer hover:text-black'>Orders</p>
                           <p className='cursor-pointer hover:text-black'>Logout</p>
@@ -69,8 +88,8 @@ const Nav = () => {
     {/* sidebar menu for small screen */}
 
 
-          <div className={`fixed top-0 right-0 h-full bg-white z-50 transition-all duration-300 ${visible ? 'w-64' : 'w-0 overflow-hidden'}`}>
-              <div className='flex flex-col text-gray-600'>
+          <div className={`fixed top-0 right-0 h-full z-50 transition-all duration-300 ${visible ? 'w-64' : 'w-0 overflow-hidden'} ${isHomePage ? 'home-mobile-menu' : 'bg-white'}`}>
+              <div className={`flex flex-col ${isHomePage ? 'home-mobile-menu-links' : 'text-gray-600'}`}>
                     <div onClick={()=>setvisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
                         <img src={assets.dropdown_icon} className='h-4 rotate-180' alt="" />
                         <p>Back</p>

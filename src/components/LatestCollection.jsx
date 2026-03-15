@@ -16,10 +16,10 @@ const LatestCollection = () => {
     
 
   return (
-    <div className='my-10'>
+    <div className='home-section my-10'>
         <div className='text-center py-9 text-3xl'>
             <Title text1={'Latest'} text2={'Collection'} />
-            <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
+            <p className='home-section-subtitle w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, recusandae.
                 </p>
         </div>

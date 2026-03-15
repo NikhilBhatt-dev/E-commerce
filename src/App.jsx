@@ -1,5 +1,5 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Collection from './pages/Collection'
@@ -16,12 +16,24 @@ import SearchBar from './components/SearchBar'
 
 
 const App =() =>{
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const [theme, setTheme] = useState(() => localStorage.getItem('site-theme') || 'light');
+
+  useEffect(() => {
+    localStorage.setItem('site-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-   <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-    <Nav />
+   <div className={`app-shell app-theme-${theme} px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]`}>
+    <Nav theme={theme} toggleTheme={toggleTheme} isHomePage={isHomePage} />
     <SearchBar />
     <Routes>
-      <Route path='/' element={<Home/>} />
+      <Route path='/' element={<Home theme={theme} />} />
       <Route path='/collection' element={<Collection />} />
       <Route path='/about' element={<About />} />
       <Route path='/login' element={<Login />} />

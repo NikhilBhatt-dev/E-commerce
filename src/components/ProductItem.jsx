@@ -7,9 +7,9 @@ const ProductItem = ({ id, image, name, price }) => {
     const { currency } = useContext(ShopContext);
 
     return (
-        <Link to={`/product/${id}`} className='text-gray-700 cursor-pointer'>
+        <Link to={`/product/${id}`} className='home-product-item text-gray-700 cursor-pointer'>
             
-            <div className='overflow-hidden'>
+            <div className='home-product-image overflow-hidden'>
                 <img 
                     src={image[0]} 
                     onError={(e) => (e.target.src = image[1]?.url)} 

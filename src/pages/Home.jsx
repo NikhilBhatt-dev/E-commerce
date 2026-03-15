@@ -5,9 +5,9 @@ import BestSeller from '../components/BestSeller'
 import OurPolicy from '../components/OurPolicy'
 import NewsLatter from '../components/NewsLatter'
 
-const Home = () => {
+const Home = ({ theme }) => {
   return (
-    <div>
+    <div className={`home-page ${theme === 'dark' ? 'home-page-dark' : 'home-page-light'}`}>
       <Hero />
       <LatestCollection />
       <BestSeller />
