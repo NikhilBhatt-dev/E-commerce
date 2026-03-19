@@ -47,16 +47,16 @@ const Nav = ({ theme, toggleTheme, isHomePage }) => {
           <button
             type='button'
             onClick={toggleTheme}
-            className='theme-toggle flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300'
+            className='theme-toggle flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-500'
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? (
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.8' className='h-5 w-5'>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.8' className='theme-toggle-icon h-5 w-5'>
                 <circle cx='12' cy='12' r='4' />
                 <path d='M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77' />
               </svg>
             ) : (
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='h-5 w-5'>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='theme-toggle-icon h-5 w-5'>
                 <path d='M21 14.25A8.25 8.25 0 0 1 9.75 3a8.25 8.25 0 1 0 11.25 11.25Z' />
               </svg>
             )}
