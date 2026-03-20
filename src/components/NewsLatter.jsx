@@ -6,7 +6,7 @@ const NewsLatter = () => {
         event.preventDefault();
     }
   return (
-    <div className='home-newsletter text-center'>
+    <div className='home-newsletter text-center '>
         <p className='home-newsletter-title text-2xl font-medium text-gray-800 '>
             Subscribe now & get 20% off
         </p>

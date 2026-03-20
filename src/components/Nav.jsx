@@ -65,7 +65,10 @@ const Nav = ({ theme, toggleTheme, isHomePage }) => {
         <img onClick={()=>setShowSearch(true)} src={assets.search_icon} alt="search-icon" className='w-5 cursor-pointer' />
         
         <div className='group relative'>
-                  <img className='w-5 cursor-pointer' src={assets.profile_icon} alt="profile_icon" />
+                 
+          <Link  to='/login'> 
+          <img className='w-5 cursor-pointer' src={assets.profile_icon} alt="profile_icon" /> 
+          </Link>
                   <div className='group-hover:block hidden absolute right-0 pt-4'>
                       <div className={`flex flex-col gap-2 w-36 py-3 px-5 rounded shadow-md ${isHomePage ? 'home-profile-menu' : 'bg-white text-gray-500'}`}>
                           <p className='cursor-pointer hover:text-black'>My Profile</p>
